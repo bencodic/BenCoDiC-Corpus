@@ -1,0 +1,2 @@
+BenCoDiC: Bengali Contextual and Diverse Cyberbullying Corpus
+BenCoDiC is a 50,250-sample Bengali cyberbullying corpus containing captions, comments, and replies from political YouTube news videos. It includes rich metadata, hierarchical context links, eight analytical dimensions (user, content, context, time, language, target identity, political party, impact scores), and expert-verified bully/not-bully labels. The dataset supports detection, perpetrator analysis, behavioral modeling, and network-based research on cyberbullying dynamics.
