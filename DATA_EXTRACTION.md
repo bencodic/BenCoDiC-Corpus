@@ -55,7 +55,7 @@ YouTube.CommentThreads.list(
 )
 ```
 
-Pagination continues until no `nextPageToken` is returned. The script records the comment ID, author identifier, text, publication time, like count, and reply count.
+Pagination continues until no `nextPageToken` is returned. The script records the comment ID, author display name, text, publication time, like count, and reply count.
 
 ### 3.3 Replies
 
@@ -65,7 +65,6 @@ Replies are retrieved using:
 YouTube.Comments.list(
     'snippet',
     {
-        videoId: <videoId>,
         maxResults: 100,
         pageToken: <nextPageTokenRep>,
         parentId: <parentCommentId>
@@ -73,13 +72,13 @@ YouTube.Comments.list(
 )
 ```
 
-Pagination continues until no further page token is returned. The script records the reply ID, author identifier, text, publication time, and like count.
+Pagination continues until no further page token is returned. The script records the reply ID, author display name, text, publication time, and like count.
 
 `slno`, `parentSlno`, and `grandparentSlno` preserve the caption-comment-reply hierarchy defined in `DATA_SCHEMA.md`.
 
 ## 4. Stage 2: Channel/User Information
 
-The script `extract_channel_info.gs` reads the Stage-1 `handler` values and resolves the corresponding YouTube channel IDs. Channel/user information is processed in configurable `startRow` and `endRow` ranges to accommodate the Google Apps Script execution-time limitation.
+The script `extract_channel_info.gs` reads the Stage-1 `handler` values, derived from the available author display names, and attempts to resolve the corresponding YouTube channel IDs. Channel/user information is processed in configurable `startRow` and `endRow` ranges to accommodate the Google Apps Script execution-time limitation.
 
 After a channel ID is resolved, two YouTube Data API v3 `channels` requests are used:
 
